@@ -4,7 +4,9 @@
   "description": "## version",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "webpack && node test.js",
+    "build": "webpack",
+    "setup": "node setup.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +21,7 @@
   "homepage": "https://github.com/KiichiSugihara/atcoder-ts#readme",
   "dependencies": {
     "@types/node": "^14.0.13",
+    "shelljs": "^0.8.4",
     "ts-node": "^8.10.2",
     "typescript": "^3.8.3"
   }
