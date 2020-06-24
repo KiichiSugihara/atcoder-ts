@@ -13,7 +13,7 @@ const projectURL = './src/' + String(problemName) + '/';
 // ProjectDirへ移動
 shell.cd(projectURL);
 
-exec('oj t -c "node compile.js"', (err, stdout, stderr) => {
+exec('oj t -c "npx ts-node main.ts"', (err, stdout, stderr) => {
   if (err) {
     console.log(err);
   }

@@ -13,8 +13,8 @@ console.log(problemURL, problemName);
 const projectURL = './src/' + String(problemName) + '/';
 shell.mkdir('-p', projectURL);
 // Copy file
-const fileURL = projectURL + 'index.js';
-shell.cp('-R', './templates/index.js', fileURL);
+const fileURL = projectURL + 'main.ts';
+shell.cp('-R', './templates/main.ts', fileURL);
 // PDirへ移動
 shell.cd(projectURL);
 

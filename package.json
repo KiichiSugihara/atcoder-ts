@@ -1,19 +1,21 @@
 {
   "name": "atcoder-ts",
   "version": "1.0.0",
-  "description": "## version",
-  "main": "index.js",
+  "description": "Play AtCoder by TypeScript3.8",
   "scripts": {
-    "test": "webpack && node test.js",
-    "build": "webpack",
+    "test": " node test.js",
     "setup": "node setup.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KiichiSugihara/atcoder-ts.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "TypeScript",
+    "JavaScript",
+    "Algorithms"
+  ],
+  "author": "Kiichi Sugihara",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/KiichiSugihara/atcoder-ts/issues"
