@@ -29,10 +29,10 @@
     s.shift();
     const coordinates = s;
     // 関数
-    return getCoordinatesWithinDistanceFromX(coordinates, distance, [0, 0]);
+    return countCoordinatesWithinDistanceFromX(coordinates, distance, [0, 0]);
   };
   // 以下 関数書く
-  const getCoordinatesWithinDistanceFromX = (
+  const countCoordinatesWithinDistanceFromX = (
     coordinates: Array<Array<number>>,
     distance: number,
     xMatrix: Array<number>
