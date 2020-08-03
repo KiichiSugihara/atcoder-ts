@@ -22,17 +22,24 @@
   };
   const main = (): Print => {
     const r = _io();
-    const [s] = r.ss();
+    const s = r.nnls();
+    // 距離変数
+    const distance = s[0][1];
+    // 座標集合
+    // 関数
     // 以下入れ替え
-    return checkOnAirConditioner(Number(s));
+    return getCoordinatesWithinDistanceFromX(s, distance, [0, 0]);
   };
   // 以下 関数書く
-  const checkOnAirConditioner = (degree: number): string => {
-    if (degree >= 30) {
-      return "Yes";
-    } else {
-      return "No";
-    }
+  const getCoordinatesWithinDistanceFromX = (
+    coordinates: Array<number>,
+    distance: number,
+    xMatrix: Array<number>
+  ): number => {
+    console.log(coordinates);
+    console.log(distance);
+    console.log(xMatrix);
+    return distance;
   };
 
   outs.push(main());
