@@ -1,8 +1,9 @@
-import { cd } from "shelljs";
-import { PROBLEM_URL, PROBLEM_NAME } from "./config";
-const problemURL = PROBLEM_URL;
-const problemName = PROBLEM_NAME;
-import { exec } from "child_process";
+/* eslint-disable @typescript-eslint/no-var-requires */
+const shell = require("shelljs");
+const config = require("./config");
+const problemURL = config.PROBLEM_URL;
+const problemName = config.PROBLEM_NAME;
+const exec = require("child_process").exec;
 
 if (!problemURL || !problemName) {
   return "Set URL & Name";
@@ -11,7 +12,7 @@ if (!problemURL || !problemName) {
 const projectURL = "./src/" + String(problemName) + "/";
 
 // ProjectDirへ移動
-cd(projectURL);
+shell.cd(projectURL);
 
 exec('oj t -c "npx ts-node main.ts"', (err, stdout, stderr) => {
   if (err) {
