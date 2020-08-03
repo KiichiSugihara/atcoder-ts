@@ -1,21 +1,21 @@
-const shell = require('shelljs');
-const config = require('./config');
-const problemURL = config.PROBLEM_URL;
-const problemName = config.PROBLEM_NAME;
-const exec = require('child_process').exec;
+import { cd } from "shelljs";
+import { PROBLEM_URL, PROBLEM_NAME } from "./config";
+const problemURL = PROBLEM_URL;
+const problemName = PROBLEM_NAME;
+import { exec } from "child_process";
 
 if (!problemURL || !problemName) {
-  return 'Set URL & Name';
+  return "Set URL & Name";
 }
 
-const projectURL = './src/' + String(problemName) + '/';
+const projectURL = "./src/" + String(problemName) + "/";
 
 // ProjectDirへ移動
-shell.cd(projectURL);
+cd(projectURL);
 
 exec('oj t -c "npx ts-node main.ts"', (err, stdout, stderr) => {
   if (err) {
     console.log(err);
   }
-  console.log('Test Result', stderr);
+  console.log("Test Result", stderr);
 });
