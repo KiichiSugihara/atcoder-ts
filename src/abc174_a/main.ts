@@ -24,11 +24,15 @@
     const r = _io();
     const [s] = r.ss();
     // 以下入れ替え
-    return checkOnAirConditioner(s);
+    return checkOnAirConditioner(Number(s));
   };
   // 以下 関数書く
-  const checkOnAirConditioner = (degree: string): string => {
-    return degree;
+  const checkOnAirConditioner = (degree: number): string => {
+    if (degree >= 30) {
+      return "Yes";
+    } else {
+      return "No";
+    }
   };
 
   outs.push(main());
