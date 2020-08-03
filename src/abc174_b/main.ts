@@ -26,20 +26,29 @@
     // 距離変数
     const distance = s[0][1];
     // 座標集合
+    s.shift();
+    const coordinates = s;
     // 関数
-    // 以下入れ替え
-    return getCoordinatesWithinDistanceFromX(s, distance, [0, 0]);
+    return getCoordinatesWithinDistanceFromX(coordinates, distance, [0, 0]);
   };
   // 以下 関数書く
   const getCoordinatesWithinDistanceFromX = (
-    coordinates: Array<number>,
+    coordinates: Array<Array<number>>,
     distance: number,
     xMatrix: Array<number>
   ): number => {
-    console.log(coordinates);
-    console.log(distance);
-    console.log(xMatrix);
-    return distance;
+    let counter = 0;
+    for (const coordinate of coordinates) {
+      if (
+        Math.sqrt(
+          Math.pow(coordinate[0] - xMatrix[0], 2) +
+            Math.pow(coordinate[1] - xMatrix[1], 2)
+        ) <= distance
+      ) {
+        counter = counter + 1;
+      }
+    }
+    return counter;
   };
 
   outs.push(main());
