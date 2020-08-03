@@ -1,5 +1,3 @@
-// import std = require('tstl')
-
 {
   type Print = void | string | number | string[] | number[];
   const outs: Print[] = [];
