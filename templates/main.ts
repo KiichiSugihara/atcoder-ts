@@ -24,7 +24,13 @@
     // 以下入れ替え
     return checkOnAirConditioner(Number(s));
   };
-  // 以下 関数書く
+  /**
+   * check the degree  to turn on AirConditioner
+   *
+   * @param degree - The degree
+   * @returns "Yes" or "No"
+   *
+   */
   const checkOnAirConditioner = (degree: number): string => {
     if (degree >= 30) {
       return "Yes";
