@@ -22,15 +22,17 @@
     const r = _io();
     const [s] = r.ss();
     // 以下入れ替え
-    return checkOnAirConditioner(Number(s));
+    return getMultipleOne(Number(s));
   };
-  // 以下 関数書く
-  const checkOnAirConditioner = (degree: number): string => {
-    if (degree >= 30) {
-      return "Yes";
-    } else {
-      return "No";
-    }
+  /**
+   * get how many times as one circle area
+   *
+   * @param radius - The circle area
+   * @returns how many times as one circle area
+   *
+   */
+  const getMultipleOne = (radius: number): number => {
+    return (radius * radius) / 1;
   };
 
   outs.push(main());
