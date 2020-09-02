@@ -20,21 +20,32 @@
   };
   const main = (): Print => {
     const r = _io();
-    const [s] = r.ss();
+    const length = r.lines[0];
+    const text = r.lines[1];
     // 以下入れ替え
-    return checkOnAirConditioner(Number(s));
+    return checkDoubleString(length, text);
   };
+
   /**
-   * check the degree  to turn on AirConditioner
+   * check double of  a string
    *
-   * @param degree - The degree
+   * @param length - the string length
+   * @param text - the string
    * @returns "Yes" or "No"
    *
    */
-  const checkOnAirConditioner = (degree: number): string => {
-    if (degree >= 30) {
-      return "Yes";
+  const checkDoubleString = (length: number, text: string): string => {
+    // 奇数なら繰り返しできない
+    if (length % 2 !== 0) {
+      return "No";
     } else {
+      const [frontText, backText] = [
+        text.substr(0, length / 2),
+        text.substr(length / 2, length / 2),
+      ];
+      if (frontText === backText) {
+        return "Yes";
+      }
       return "No";
     }
   };
