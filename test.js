@@ -18,5 +18,11 @@ exec('oj t -c "npx ts-node main.ts"', (err, stdout, stderr) => {
   if (err) {
     console.log(err);
   }
-  console.log("Test Result", stderr);
+  if (stderr) {
+    console.log(stderr);
+  }
+  if (stdout) {
+    console.log("Test Result");
+    console.log(stdout);
+  }
 });
