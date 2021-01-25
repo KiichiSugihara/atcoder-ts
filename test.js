@@ -4,6 +4,7 @@ const config = require("./config");
 const problemURL = config.PROBLEM_URL;
 const problemName = config.PROBLEM_NAME;
 const spawn = require("child_process").spawn;
+const chalk = require("chalk");
 
 if (!problemURL || !problemName) {
   return "Set URL & Name";
@@ -19,5 +20,17 @@ const proc = spawn("oj", ["t", "-c", npm_command]);
 
 console.log("child:" + proc.pid);
 proc.stdout.on("data", (data) => {
-  console.log(data.toString());
+  const dataStr = data.toString();
+  if (dataStr.match(/SUCCESS/)) {
+    //strにACを含む場合の処理
+    console.log(chalk.green.bold(dataStr));
+  } else if (dataStr.match(/FAILURE/)) {
+    //strにWAを含む場合の処理
+    console.log(chalk.red.bold(dataStr));
+  } else if (dataStr.match(/INFO/)) {
+    //strにWAを含む場合の処理
+    console.log(chalk.blue(dataStr));
+  } else {
+    console.log(dataStr);
+  }
 });

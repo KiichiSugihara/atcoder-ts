@@ -32,6 +32,7 @@
   "homepage": "https://github.com/KiichiSugihara/atcoder-ts#readme",
   "dependencies": {
     "@types/node": "^14.0.13",
+    "chalk": "^4.1.0",
     "shelljs": "^0.8.4",
     "ts-node": "^8.10.2",
     "typescript": "^3.8.3"
