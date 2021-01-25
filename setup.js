@@ -19,8 +19,8 @@ shell.cp("-R", "./templates/main.ts", fileURL);
 // PDirへ移動
 shell.cd(projectURL);
 
-const exexCommand = "oj d " + problemURL;
-exec(exexCommand, (err, stdout) => {
+const execCommand = "oj d " + problemURL;
+exec(execCommand, (err, stdout) => {
   if (err) {
     console.log(err);
   }
