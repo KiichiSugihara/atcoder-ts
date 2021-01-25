@@ -1,9 +1,12 @@
 # atcoder-ts
 
+## Description
+For people who want to do AtCoder by TypeScript
+
 ## version
 
 - TypeScript 3.8
-- reference https://atcoder.jp/contests/language-test-202001
+- Version Reference https://atcoder.jp/contests/language-test-202001
 
 ## Before using
 
@@ -14,23 +17,32 @@ oj login https://beta.atcoder.jp/
 yarn install -g atcoder-cli
 ```
 
-## setup
+- delete src/**
 
-rewrite config.js
+## When solving a problem
+
+### setup
+
+1.Rewrite config.js
 
 - PROBLEM_URL
 - PROBLEM_NAME
 
-## test
+2.Install tests & new work directory 
+`yarn setup`
 
-yarn run test
+### test
 
-## submit
+1.Test
 
-rewrite this command
+`yarn run test`
 
-- oj s https://atcoder.jp/contests/abc149/tasks/abc149_a src/abc149_a/main.ts
+### submit
 
-### Reference
+1.rewrite & use this command
 
-https://online-judge-tools.readthedocs.io/en/master/introduction.ja.html
+`oj s https://atcoder.jp/contests/abc149/tasks/abc149_a src/abc149_a/main.ts`
+
+## Reference
+- [MyNote](https://scrapbox.io/kii-cafe/setup_AtCoder)
+- https://online-judge-tools.readthedocs.io/en/master/introduction.ja.html
