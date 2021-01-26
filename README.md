@@ -41,8 +41,7 @@ yarn install -g atcoder-cli
 ### submit
 
 1.rewrite & use this command
-
-`oj s https://atcoder.jp/contests/abc149/tasks/abc149_a src/abc149_a/main.ts
+oj s https://atcoder.jp/contests/abc149/tasks/abc149_a src/abc149_a/main.ts
 
 ## Reference
 
