@@ -21,23 +21,17 @@
   const main = (): Print => {
     const r = _io();
     const s = r.nnls();
-    const [numberA, numberB, numberC, text] = [
-      s[0][0],
-      s[1][0],
-      s[1][1],
-      r.lines[2],
-    ];
+    const [marbles] = [String(s[0])];
     // 以下入れ替え
-    return practice01(numberA, numberB, numberC, text);
+    return placingMarbles(marbles);
   };
 
-  const practice01 = (
-    numberA: number,
-    numberB: number,
-    numberC: number,
-    text: string
-  ): string => {
-    return String(numberA + numberB + numberC) + " " + text;
+  const placingMarbles = (marbles: string): number => {
+    let counter = 0;
+    [...marbles].forEach((marble) => {
+      Number(marble) === 1 ? counter++ : (counter = counter + 0);
+    });
+    return counter;
   };
 
   outs.push(main());
