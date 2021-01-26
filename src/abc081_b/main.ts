@@ -21,23 +21,19 @@
   const main = (): Print => {
     const r = _io();
     const s = r.nnls();
-    const [numberA, numberB, numberC, text] = [
-      s[0][0],
-      s[1][0],
-      s[1][1],
-      r.lines[2],
-    ];
+    const [numbers] = [s[1]];
     // 以下入れ替え
-    return practice01(numberA, numberB, numberC, text);
+    return shiftOnly(numbers);
   };
 
-  const practice01 = (
-    numberA: number,
-    numberB: number,
-    numberC: number,
-    text: string
-  ): string => {
-    return String(numberA + numberB + numberC) + " " + text;
+  const shiftOnly = (numbers: Array<number>): number => {
+    let currentNumbers = numbers;
+    let count = 0;
+    while (currentNumbers.every((n) => n % 2 === 0)) {
+      currentNumbers = currentNumbers.map((n) => n / 2);
+      count++;
+    }
+    return count;
   };
 
   outs.push(main());
