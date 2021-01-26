@@ -37,7 +37,21 @@
     number50: number,
     sumX: number
   ): number => {
-    return number500 + number100 + number50 + sumX;
+    let counter = 0;
+    // すべて50の倍数なので，先に割って計算する 10,2,1
+    if (sumX % 50 === 0) {
+      sumX = sumX / 50;
+      for (let i = 0; i <= number500; i++) {
+        for (let j = 0; j <= number100; j++) {
+          for (let k = 0; k <= number50; k++) {
+            if (10 * i + 2 * j + k === sumX) {
+              counter++;
+            }
+          }
+        }
+      }
+    }
+    return counter;
   };
 
   outs.push(main());
