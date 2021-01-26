@@ -20,23 +20,24 @@
   };
   const main = (): Print => {
     const r = _io();
-    const [s] = r.ss();
+    const s = r.nnls();
+    const [numberA, numberB, numberC, text] = [
+      s[0][0],
+      s[1][0],
+      s[1][1],
+      r.lines[2],
+    ];
     // 以下入れ替え
-    return checkOnAirConditioner(Number(s));
+    return practice01(numberA, numberB, numberC, text);
   };
-  /**
-   * check the degree  to turn on AirConditioner
-   *
-   * @param degree - The degree
-   * @returns "Yes" or "No"
-   *
-   */
-  const checkOnAirConditioner = (degree: number): string => {
-    if (degree >= 30) {
-      return "Yes";
-    } else {
-      return "No";
-    }
+
+  const practice01 = (
+    numberA: number,
+    numberB: number,
+    numberC: number,
+    text: string
+  ): string => {
+    return String(numberA + numberB + numberC) + " " + text;
   };
 
   outs.push(main());
