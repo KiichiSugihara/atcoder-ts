@@ -28,8 +28,8 @@ proc.stdout.on("data", (data) => {
     //strにWAを含む場合の処理
     console.log(chalk.red.bold(dataStr));
   } else if (dataStr.match(/INFO/)) {
-    //strにWAを含む場合の処理
-    console.log(chalk.blue(dataStr));
+    //strにINFOを含む場合の処理
+    console.log(chalk.cyan.bold(dataStr));
   } else {
     console.log(dataStr);
   }
