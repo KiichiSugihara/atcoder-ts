@@ -21,23 +21,23 @@
   const main = (): Print => {
     const r = _io();
     const s = r.nnls();
-    const [numberA, numberB, numberC, text] = [
-      s[0][0],
-      s[1][0],
-      s[1][1],
-      r.lines[2],
+    const [number500, number100, number50, sumX] = [
+      Number(s[0][0]),
+      Number(s[1][0]),
+      Number(s[2][0]),
+      Number(s[3][0]),
     ];
     // 以下入れ替え
-    return practice01(numberA, numberB, numberC, text);
+    return coins(number500, number100, number50, sumX);
   };
 
-  const practice01 = (
-    numberA: number,
-    numberB: number,
-    numberC: number,
-    text: string
-  ): string => {
-    return String(numberA + numberB + numberC) + " " + text;
+  const coins = (
+    number500: number,
+    number100: number,
+    number50: number,
+    sumX: number
+  ): number => {
+    return number500 + number100 + number50 + sumX;
   };
 
   outs.push(main());
