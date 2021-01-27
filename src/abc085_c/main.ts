@@ -20,8 +20,26 @@
     paperNumber: number,
     sumOtoshidama: number
   ): string => {
-    console.log(paperNumber, sumOtoshidama);
-    return "4 0 5";
+    // 1000の倍数で割っておく
+    const divideSumOtoshidama = sumOtoshidama / 1000;
+    // 例外を先に除去
+    if (
+      divideSumOtoshidama < paperNumber ||
+      10 * paperNumber < divideSumOtoshidama
+    ) {
+      return "-1 -1 -1";
+    }
+    for (let z = paperNumber; z >= 0; z--) {
+      // paperNumber=x+y+zとdivideSumOtoshidama=10x+5y+zの連立方程式からx消して，y出す
+      const y = (10 * paperNumber - 9 * z - divideSumOtoshidama) / 5;
+      // 残り5000円で表す値は5で割れる且つ正を利用
+      if (!Number.isInteger(y) || y < 0 || paperNumber < y + z) {
+        continue;
+      }
+      const x = paperNumber - y - z;
+      return `${x} ${y} ${z}`;
+    }
+    return "-1 -1 -1";
   };
 
   outs.push(main());
