@@ -28,8 +28,20 @@
     return cardGameForTwo(N, A);
   };
 
-  const cardGameForTwo = (A: number, numbers: number[]): number => {
-    return A + numbers[0];
+  const cardGameForTwo = (cardsNumber: number, numbers: number[]): number => {
+    // 降順ソート
+    numbers.sort((a, b) => b - a);
+    let differSum = 0;
+    for (let i = 0; i < cardsNumber; i++) {
+      // 取得する値は0,2,4と偶数番
+      if (i % 2 === 0) {
+        differSum += numbers[i];
+      } else {
+        // 取得される値は1,3,5と偶数番
+        differSum -= numbers[i];
+      }
+    }
+    return differSum;
   };
 
   outs.push(main());
