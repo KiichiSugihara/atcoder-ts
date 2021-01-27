@@ -21,23 +21,23 @@
   const main = (): Print => {
     const r = _io();
     const s = r.nnls();
-    const [numberA, numberB, numberC, text] = [
-      s[0][0],
-      s[1][0],
-      s[1][1],
-      r.lines[2],
-    ];
+    const [maxInt, minSum, maxSum] = [s[0][0], s[0][1], s[0][2]];
     // 以下入れ替え
-    return practice01(numberA, numberB, numberC, text);
+    return someSums(maxInt, minSum, maxSum);
   };
 
-  const practice01 = (
-    numberA: number,
-    numberB: number,
-    numberC: number,
-    text: string
-  ): string => {
-    return String(numberA + numberB + numberC) + " " + text;
+  const someSums = (maxInt: number, minSum: number, maxSum: number): number => {
+    let sum = 0;
+    for (let i = 1; i <= maxInt; i++) {
+      const checkInt = String(i).split("");
+      let sumInt = 0;
+      checkInt.forEach((splitInt) => (sumInt = sumInt + Number(splitInt)));
+
+      if (minSum <= sumInt && sumInt <= maxSum) {
+        sum = sum + i;
+      }
+    }
+    return sum;
   };
 
   outs.push(main());
