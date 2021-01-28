@@ -9,35 +9,19 @@
   };
   const main = (): Print => {
     const args = _io().lines;
-    const [mochies] = [
-      args
-        // ０個目の餅数排除
-        .filter((_: string, index: number) => index > 0)
-        // 要素をnumberに変換
-        .map((o: string) => parseInt(o, 10)),
-    ];
-    return kagamiMochi(mochies);
+    const [texts] = [args[0]];
+    return dayDream(texts);
   };
 
-  const kagamiMochi = (mochies: number[]): number => {
-    // 降順で並べる
-    mochies.sort((a, b) => b - a);
-    let count = 0;
-    let currentWidth: number | undefined;
-    mochies.forEach((mochiWidth) => {
-      // 最初
-      if (currentWidth === undefined) {
-        currentWidth = mochiWidth;
-        count += 1;
-        return;
-      }
-      if (currentWidth === mochiWidth) {
-        return;
-      }
-      currentWidth = mochiWidth;
-      count += 1;
-    });
-    return count;
+  const dayDream = (texts: string): string => {
+    // 正規表現で判断
+    // 文字列反転してから正規表現も試したがこちらのほうが早かった
+    const checkDayDream = /^((dream)|(dreamer)|(erase)|(eraser))*$/.test(texts);
+    if (checkDayDream) {
+      return "YES";
+    } else {
+      return "NO";
+    }
   };
 
   outs.push(main());
