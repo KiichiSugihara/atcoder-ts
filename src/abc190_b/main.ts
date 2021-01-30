@@ -29,25 +29,20 @@ import * as fs from "fs";
 
   const main = (): Print => {
     // 問題のための入力処理
-    const [a, b, c] = [
-      input.nnls()[0][0],
-      input.nnls()[0][1],
-      input.nnls()[0][2],
-    ];
     // 問題のための関数
-    return veryVeryPrimitiveGame(a, b, c);
+    return magic3(input.nnls());
   };
 
   // 問題のための関数
-  const veryVeryPrimitiveGame = (a: number, b: number, c: number): string => {
-    if (a === b) {
-      if (c === 0) {
-        return "Aoki";
+  const magic3 = (input: number[][]): string => {
+    const [N, S, D] = [input[0][0], input[0][1], input[0][2]];
+
+    for (let i = 1; i < N + 1; i++) {
+      if (input[i][0] < S && D < input[i][1]) {
+        return "Yes";
       }
-      return "Takahashi";
-    } else if (a < b) {
-      return "Aoki";
-    } else return "Takahashi";
+    }
+    return "No";
   };
 
   outs.push(main());
