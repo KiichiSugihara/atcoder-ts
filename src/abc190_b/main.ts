@@ -1,43 +1,53 @@
+import * as fs from "fs";
 {
   type Print = void | string | number | string[] | number[];
   const outs: Print[] = [];
-  const _io = () => {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const str = require("fs").readFileSync("/dev/stdin", "utf8");
-    const lines = str.trim().split("\n");
-    return { lines };
-  };
+  const str = fs.readFileSync("/dev/stdin", "utf8");
+
+  // Inputに対する共通処理
+  class Input {
+    lines: string[];
+    index = 0;
+    constructor(str: string) {
+      this.lines = str.split("\n");
+    }
+    s = () => this.lines[this.index++] || "";
+    n = () => Number(this.s());
+
+    mn = (v: string[]) => v.map(Number);
+    sp = (v: string) => v.split(" ");
+
+    ss = () => this.sp(this.s());
+    nn = () => this.mn(this.ss());
+    nls = () => this.mn(this.lines.slice(this.index));
+    // number[][]で扱いたい時
+    nnls = () =>
+      this.lines.slice(this.index).map((v: string) => this.mn(this.sp(v)));
+  }
+
+  const input = new Input(str);
+
   const main = (): Print => {
-    const args = _io().lines;
-    const [mochies] = [
-      args
-        // ０個目の餅数排除
-        .filter((_: string, index: number) => index > 0)
-        // 要素をnumberに変換
-        .map((o: string) => parseInt(o, 10)),
+    // 問題のための入力処理
+    const [a, b, c] = [
+      input.nnls()[0][0],
+      input.nnls()[0][1],
+      input.nnls()[0][2],
     ];
-    return kagamiMochi(mochies);
+    // 問題のための関数
+    return veryVeryPrimitiveGame(a, b, c);
   };
 
-  const kagamiMochi = (mochies: number[]): number => {
-    // 降順で並べる
-    mochies.sort((a, b) => b - a);
-    let count = 0;
-    let currentWidth: number | undefined;
-    mochies.forEach((mochiWidth) => {
-      // 最初
-      if (currentWidth === undefined) {
-        currentWidth = mochiWidth;
-        count += 1;
-        return;
+  // 問題のための関数
+  const veryVeryPrimitiveGame = (a: number, b: number, c: number): string => {
+    if (a === b) {
+      if (c === 0) {
+        return "Aoki";
       }
-      if (currentWidth === mochiWidth) {
-        return;
-      }
-      currentWidth = mochiWidth;
-      count += 1;
-    });
-    return count;
+      return "Takahashi";
+    } else if (a < b) {
+      return "Aoki";
+    } else return "Takahashi";
   };
 
   outs.push(main());
