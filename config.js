@@ -1,6 +1,6 @@
 let config = {};
 
-config.PROBLEM_URL = "https://atcoder.jp/contests/abc086/tasks/arc089_a";
-config.PROBLEM_NAME = "arc089_a";
+config.PROBLEM_URL = "https://atcoder.jp/contests/abc190/tasks/abc190_a";
+config.PROBLEM_NAME = "abc190_a";
 
 module.exports = config;
