@@ -34,25 +34,26 @@ import * as fs from "fs";
 
   const main = (): Print => {
     // 問題のための入力処理
-    const [a, b, c] = [
+    const [v, t, s, d] = [
       input.nnls()[0][0],
       input.nnls()[0][1],
       input.nnls()[0][2],
+      input.nnls()[0][3],
     ];
+    console.log(v, t, s, d);
     // 問題のための関数
-    return veryVeryPrimitiveGame(a, b, c);
+    return veryVeryPrimitiveGame(v, t, s, d);
   };
 
   // 問題のための関数
-  const veryVeryPrimitiveGame = (a: number, b: number, c: number): string => {
-    if (a === b) {
-      if (c === 0) {
-        return "Aoki";
-      }
-      return "Takahashi";
-    } else if (a < b) {
-      return "Aoki";
-    } else return "Takahashi";
+  const veryVeryPrimitiveGame = (
+    v: number,
+    t: number,
+    s: number,
+    d: number
+  ): string => {
+    console.log(v, t, s, d);
+    return "vtsd";
   };
 
   outs.push(main());
