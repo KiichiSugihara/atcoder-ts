@@ -51,7 +51,7 @@ import * as fs from "fs";
     s: number,
     d: number
   ): string => {
-    if (v * t <= d && d <= v * (t + s)) {
+    if (v * t <= d && d <= v * s) {
       return "No";
     }
     return "Yes";
