@@ -35,21 +35,24 @@ import * as fs from "fs";
   const main = (): Print => {
     // 問題のための入力処理
 
-    const [n, x, a] = [
-      input.lines[0].split(" ")[0],
-      input.lines[0].split(" ")[1],
-      input.lines[1],
-    ];
+    const [x, a] = [input.lines[0].split(" ")[1], input.lines[1].split(" ")];
 
     // 問題のための関数
-    return removeIt(Number(n), x, a);
+    return removeIt(x, a);
   };
 
   // 問題のための関数
-  const removeIt = (n: number, x: string, a: string): string => {
-    console.log(n, x);
-    console.log(a);
-    return a;
+  const removeIt = (x: string, a: string[]): string => {
+    const newArray = a.filter((v) => v !== x);
+    if (!newArray.length) {
+      return "";
+    } else {
+      let texts = newArray[0];
+      for (let i = 1; i < newArray.length; i++) {
+        texts = texts + " " + newArray[i];
+      }
+      return texts;
+    }
   };
 
   outs.push(main());
