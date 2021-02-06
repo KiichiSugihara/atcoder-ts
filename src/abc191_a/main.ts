@@ -40,20 +40,21 @@ import * as fs from "fs";
       input.nnls()[0][2],
       input.nnls()[0][3],
     ];
-    console.log(v, t, s, d);
     // 問題のための関数
-    return veryVeryPrimitiveGame(v, t, s, d);
+    return vanishingPitch(v, t, s, d);
   };
 
   // 問題のための関数
-  const veryVeryPrimitiveGame = (
+  const vanishingPitch = (
     v: number,
     t: number,
     s: number,
     d: number
   ): string => {
-    console.log(v, t, s, d);
-    return "vtsd";
+    if (v * t <= d && d <= v * (t + s)) {
+      return "No";
+    }
+    return "Yes";
   };
 
   outs.push(main());
