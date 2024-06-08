@@ -41,28 +41,36 @@ class Input {
 const main = (): void => {
   const input = new Input(str);
 
-  // 入力処理の例
-  const [N, L, R] = input.nn();
-  
+  // 入力処理
+  const [N, M] = input.nn();
+  const A = input.nn();
+  const X = input.nnls();
+
   // 問題のロジックをここに書く
-  const result = solve(N, L, R);
+  const result = solve(N, M, A, X);
   
   // 結果を出力
-  console.log(result.join(' '));
+  console.log(result);
 };
 
-// 特定の問題を解く関数（例としてA - Subsegment Reverseのロジックを実装）
-const solve = (N: number, L: number, R: number): number[] => {
-  // 初期の配列を作成
-  const A = Array.from({ length: N }, (_, i) => i + 1);
+// 特定の問題を解く関数
+const solve = (N: number, M: number, A: number[], X: number[][]): string => {
+  // 栄養素ごとの摂取量を計算
+  const totalIntake = new Array(M).fill(0);
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < M; j++) {
+      totalIntake[j] += X[i][j];
+    }
+  }
 
-  // 部分配列を反転
-  const left = A.slice(0, L - 1);
-  const middle = A.slice(L - 1, R).reverse();
-  const right = A.slice(R);
-
-  // 結果の配列を結合
-  return [...left, ...middle, ...right];
+  // 目標を達成しているかチェック
+  for (let j = 0; j < M; j++) {
+    if (totalIntake[j] < A[j]) {
+      return "No";
+    }
+  }
+  
+  return "Yes";
 };
 
 // main関数を実行する
