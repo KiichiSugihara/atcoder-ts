@@ -4,6 +4,7 @@
   "description": "Play AtCoder by TypeScript5.1",
   "scripts": {
     "test": "node test.js",
+    "updateConfig": "node updateConfig.js",
     "setup": "node setup.js",
     "lint": "eslint \"**/*.ts\"",
     "format": "prettier --write \"**/*.{js,ts,json,md}\"",
