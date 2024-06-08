@@ -1,7 +1,8 @@
 import * as fs from "fs";
 
 // 標準入力を読み込む
-const str = fs.readFileSync("/dev/stdin", "utf8");
+// ファイルから読み込んだ標準入力の前後の空白や改行を削除
+const str = fs.readFileSync("/dev/stdin", "utf8").trim();
 
 // Inputに対する共通処理
 class Input {
@@ -9,7 +10,8 @@ class Input {
   index = 0;
 
   constructor(str: string) {
-    this.lines = str.split("\n").filter(line => line.trim() !== "");
+    // 空白や改行で分割し、空の行を除去
+    this.lines = str.split(/[\s\n]+/).filter(line => line.trim() !== "");
   }
 
   // 次の行の文字列を取得
@@ -42,27 +44,24 @@ const main = (): void => {
   const input = new Input(str);
 
   // 入力処理の例
-  const [N, L, R] = input.nn();
+  const A = input.n(); // 1行目の数値を取得
+  const B = input.n(); // 2行目の数値を取得
   
   // 問題のロジックをここに書く
-  const result = solve(N, L, R);
+  const result = findCulprit(A, B);
   
   // 結果を出力
-  console.log(result.join(' '));
+  console.log(result);
 };
 
-// 特定の問題を解く関数（例としてA - Subsegment Reverseのロジックを実装）
-const solve = (N: number, L: number, R: number): number[] => {
-  // 初期の配列を作成
-  const A = Array.from({ length: N }, (_, i) => i + 1);
-
-  // 部分配列を反転
-  const left = A.slice(0, L - 1);
-  const middle = A.slice(L - 1, R).reverse();
-  const right = A.slice(R);
-
-  // 結果の配列を結合
-  return [...left, ...middle, ...right];
+// 特定の問題を解く関数（ケーキの犯人特定）
+const findCulprit = (A: number, B: number): number => {
+  const people = [1, 2, 3];
+  // A と B 以外の人を探す
+  const suspects = people.filter(person => person !== A && person !== B);
+  
+  // 一人に絞れるかチェック
+  return suspects.length === 1 ? suspects[0] : -1;
 };
 
 // main関数を実行する
