@@ -12,10 +12,10 @@ For people who want to do AtCoder by TypeScript
 ## Before using
 
 ```
-yarn
+npm i
 pip install -U online-judge-tools
 oj login https://beta.atcoder.jp/
-yarn global add atcoder-cli
+npm run global add atcoder-cli
 ```
 
 - delete src/\*\*
@@ -30,18 +30,21 @@ yarn global add atcoder-cli
 - PROBLEM_NAME
 
   2.Install tests & new work directory
-  `yarn setup`
+  `npm run setup`
 
 ### test
 
 1.Test
 
-`yarn run test`
+`npm run test`
 
 ### submit
 
 1.rewrite & use this command
-oj s https://atcoder.jp/contests/abc149/tasks/abc149_a src/abc149_a/main.ts
+
+NOTE: We can't run the script of this command because of having interaction.
+
+oj s https://atcoder.jp/contests/abc149/tasks/abc149_a src/abc149_a/main.ts --language 5058
 
 ## Reference
 
