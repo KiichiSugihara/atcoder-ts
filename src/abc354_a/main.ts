@@ -43,25 +43,28 @@ class Input {
 const main = (): void => {
   const input = new Input(str);
 
-  // 入力処理の例
-  const A = input.n(); // 1行目の数値を取得
-  const B = input.n(); // 2行目の数値を取得
+  // 入力処理
+  const H = input.n(); // 高橋君の身長を取得
   
   // 問題のロジックをここに書く
-  const result = findCulprit(A, B);
+  const result = findDay(H);
   
   // 結果を出力
   console.log(result);
 };
 
-// 特定の問題を解く関数（ケーキの犯人特定）
-const findCulprit = (A: number, B: number): number => {
-  const people = [1, 2, 3];
-  // A と B 以外の人を探す
-  const suspects = people.filter(person => person !== A && person !== B);
+// 高橋君の身長より植物が高くなる日を求める関数
+const findDay = (yourHeight: number): number => {
+  const grow_per_day = 2;
+  let treeHeight = 0;
+  let day = 0;
   
-  // 一人に絞れるかチェック
-  return suspects.length === 1 ? suspects[0] : -1;
+  while (treeHeight <= yourHeight) {
+    treeHeight += Math.pow(grow_per_day, day);
+    day++;
+  }
+  
+  return day;
 };
 
 // main関数を実行する
