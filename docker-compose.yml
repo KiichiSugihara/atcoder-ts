@@ -9,3 +9,5 @@ services:
       - .:/app
     stdin_open: true
     tty: true
+    environment:
+      - BROWSER=none

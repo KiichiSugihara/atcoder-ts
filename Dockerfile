@@ -15,5 +15,8 @@ RUN /opt/venv/bin/pip install -U online-judge-tools
 # Set the virtual environment as the default Python
 ENV PATH="/opt/venv/bin:$PATH"
 
+# Set BROWSER environment variable to prevent browser launch
+ENV BROWSER="none"
+
 # Copy the rest of the application
 COPY . .

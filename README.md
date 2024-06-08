@@ -4,14 +4,18 @@
 
 For people who want to do AtCoder by TypeScript
 
-## version
+## Before using(Docker)
 
-- TypeScript 3.8
-- Version Reference https://atcoder.jp/contests/language-test-202001
-
-## Before using
-
+```ex.sh
+docker-compose build
+docker-compose up
+docker-compose exec atcoder /bin/bash
+oj login https://beta.atcoder.jp/
 ```
+
+## Before using(Local)
+
+```ex.sh
 npm i
 pip install -U online-judge-tools
 oj login https://beta.atcoder.jp/
@@ -22,23 +26,25 @@ npm run global add atcoder-cli
 
 ## When solving a problem
 
-### setup
+If you use Docker
+`docker-compose up`
+`docker-compose exec atcoder /bin/bash`
 
-1.Rewrite config.js
+### Setup
 
-- PROBLEM_URL
-- PROBLEM_NAME
+1. Setup problem number
+`npm run updateConfig`
 
-  2.Install tests & new work directory
-  `npm run setup`
+2. Setup problem base files
+`npm run setup`
 
-### test
+### Test
 
 1.Test
 
 `npm run test`
 
-### submit
+### Submit
 
 1.rewrite & use this command
 
