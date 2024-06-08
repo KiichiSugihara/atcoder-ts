@@ -3,10 +3,11 @@ const shell = require("shelljs");
 const config = require("./config");
 const problemURL = config.PROBLEM_URL;
 const problemName = config.PROBLEM_NAME;
-const exec = require("child_process").exec;
+const { exec } = require("child_process");
 
 if (!problemURL || !problemName) {
-  return "Set URL & Name";
+  console.log("Set URL & Name");
+  process.exit(1); // プロセスを終了し、エラーコードを返す
 }
 
 console.log(problemURL, problemName);

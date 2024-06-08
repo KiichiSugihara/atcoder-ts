@@ -15,7 +15,7 @@ For people who want to do AtCoder by TypeScript
 yarn
 pip install -U online-judge-tools
 oj login https://beta.atcoder.jp/
-yarn install -g atcoder-cli
+yarn global add atcoder-cli
 ```
 
 - delete src/\*\*
